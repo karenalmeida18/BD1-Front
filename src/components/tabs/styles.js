@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import { Fade } from '../../styles/animations';
 
 export const Container = styled.div`
-  width: 100%;
+  width: max-content;
+  margin: auto;
 `;
 
 export const Nav = styled.nav`
@@ -10,30 +12,26 @@ export const Nav = styled.nav`
   align-items: center;
   width: 100%;
   background-color: ${(props) => props.theme.bg};
-  border-bottom: 1px solid ${(props) => props.theme.gray};
-  padding: 20px 40px;
-
-  @media (max-width: 800px) {
-    padding: 10px;
-  }
+  border-bottom: 1px solid ${(props) => props.theme.lightgray};
 `;
 
 export const List = styled.ul`
   display: flex;
-  
-  @media (max-width: 800px) {
-    display: none;
-  }
 `;
 
 export const ListItem = styled.li`
   cursor: pointer;
   list-style: none;
   color: ${(props) => (props.active ? props.theme.pink : props.theme.black)};
+  border-bottom: ${(props) => (props.active && `2px solid ${props.theme.pink}`)};
+  transition: color .2s;
   font-weight: 700;
-  margin-left: 24px;
+  margin: 0 24px;
+  padding: 10px;
+  width: max-content;
+`;
 
-  &:hover {
-    color: ${(props) => props.theme.pink};
-  }
+export const Content = styled.div`
+  padding: 20px;
+  animation: ${Fade} 1s;
 `;

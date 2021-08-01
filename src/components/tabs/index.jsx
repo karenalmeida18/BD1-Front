@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as S from './styles';
 
 const Tabs = ({ items }) => {
-  const [itemSelected, setItemSelected] = useState([items].tabItem);
+  const [itemSelected, setItemSelected] = useState(items[0].tabItem);
 
   return (
     <S.Container>
@@ -20,9 +20,10 @@ const Tabs = ({ items }) => {
           ))}
         </S.List>
       </S.Nav>
-      {
-        itemSelected
-      }
+
+      <S.Content>
+        {itemSelected}
+      </S.Content>
     </S.Container>
   );
 };
