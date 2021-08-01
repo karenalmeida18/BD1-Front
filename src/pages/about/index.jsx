@@ -6,7 +6,7 @@ import Tabs from '../../components/tabs';
 
 const AboutItems = [
   {
-    tabLabel: 'Cadastrar animal perdido',
+    tabLabel: 'Cadastrar animal',
     tabItem: (
       <S.Card>
         <p> 1° - Faça login </p>
@@ -21,7 +21,7 @@ const AboutItems = [
     ),
   },
   {
-    tabLabel: 'Anunciar animal perdido',
+    tabLabel: 'Anunciar animal',
     tabItem: (
       <S.Card>
         <h3>

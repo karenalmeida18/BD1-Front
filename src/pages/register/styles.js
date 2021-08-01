@@ -22,6 +22,11 @@ export const Form = styled.form`
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;
 
+  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+  }
+
   .input-file {
     border: 1px dashed;
     padding: 10px 16px;
@@ -89,5 +94,9 @@ export const Button = styled.button`
 
   &:hover {
     background-color: #9b538c;
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
   }
 `;

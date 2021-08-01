@@ -4,7 +4,7 @@ import * as S from './styles';
 // import Dog from '../../static/images/dog.svg';
 
 const Register = () => (
-  <S.Container>
+  <S.Container id="reganimal">
     <S.Header>Cadastrar animal</S.Header>
     <div>
       <S.Form>
