@@ -6,6 +6,7 @@ import Theme from './styles/theme';
 import Navbar from './components/navbar';
 import Home from './pages/home';
 import About from './pages/about';
+import AnimalsList from './pages/animalsList';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Navbar />
         <Home />
         <About />
+        <AnimalsList />
       </ThemeProvider>
       <GlobalStyle />
     </>
