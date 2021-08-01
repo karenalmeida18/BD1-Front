@@ -4,7 +4,7 @@ import Nino from '../../static/images/nino.png';
 import * as S from './styles';
 
 const Home = () => (
-  <S.Container>
+  <S.Container id="home">
     <S.Image
       src={Nino}
       alt="cachorro perdido,Contato: Isabella

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import * as S from './styles';
 import Nino from '../../static/images/shitzu.jpg';
 import Gift from '../../static/images/gift.png';
+import Luna from '../../static/images/luna.jpeg';
 
 import ModalGift from './modalGift';
 
@@ -26,34 +27,35 @@ const animals = [
     species: 'dog',
   },
   {
-    image: Nino,
-    name: 'Nino',
-    recompense: 'R$ 500',
+    image: Luna,
+    name: 'Luna',
+    recompense: 'R$ 1000',
     species: 'dog',
   },
   {
-    image: Nino,
-    name: 'Nino',
-    recompense: '500',
+    image: Luna,
+    name: 'Luna',
+    recompense: '1000',
     species: 'dog',
   },
   {
-    image: Nino,
-    name: 'Nino',
-    recompense: '500',
+    image: Luna,
+    name: 'Luna',
+    recompense: '1000',
     species: 'dog',
   },
 ];
 
 const AnimalsList = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [recompenseState, setRecompenseState] = useState('');
 
   return (
-    <S.Container>
+    <S.Container id="lostanimals">
       <S.Header>Animais perdidos</S.Header>
 
       {openModal && (
-        <ModalGift closeModal={() => setOpenModal(false)} />
+        <ModalGift closeModal={() => setOpenModal(false)} recompense={recompenseState} />
       )}
 
       <S.List>
@@ -75,7 +77,10 @@ const AnimalsList = () => {
                   alt="mão segurando uma caixa de presente"
                   className="icon-gift"
                   onKeyPress={() => setOpenModal(true)}
-                  onClick={() => setOpenModal(true)}
+                  onClick={() => {
+                    setOpenModal(true);
+                    setRecompenseState(recompense);
+                  }}
                 />
               </S.Recompense>
             </>
