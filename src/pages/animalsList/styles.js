@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Transform, FadeBottom } from '../../styles/animations';
 
 export const Container = styled.div`
+   scroll-margin-top: 70px;
    display: flex;
    flex-direction: column;
    align-items: center;

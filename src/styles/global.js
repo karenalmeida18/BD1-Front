@@ -9,6 +9,7 @@ export default createGlobalStyle`
   html, body, #root {
      -webkit-font-smoothing: antialiased !important;
      font-family: 'Montserrat', sans-serif;
+     scroll-behavior: smooth;
   }
   button {
     cursor : pointer;

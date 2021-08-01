@@ -75,7 +75,7 @@ const AboutItems = [
 ];
 
 const About = () => (
-  <S.Container>
+  <S.Container id="about">
     <S.Header>
       <S.Header>
         Oi, Somos a

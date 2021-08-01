@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Fade } from '../../styles/animations';
 
 export const Container = styled.div`
+   scroll-margin-top: 75px;
    width: 100%;
    height: 100%;
    padding: 40px 20px;

@@ -27,7 +27,20 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   cursor: pointer;
   list-style: none;
-  color: ${(props) => props.theme.black};
+  
+  font-weight: 700;
+  margin-left: 24px;
+
+  &:hover {
+    color: ${(props) => props.theme.pink};
+  }
+`;
+
+export const RemoveLinkStyle = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+  list-style: none;
+  color: ${(props) => (props.active ? props.theme.pink : props.theme.black)};
   font-weight: 700;
   margin-left: 24px;
 
