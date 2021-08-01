@@ -5,6 +5,7 @@ import Theme from './styles/theme';
 
 import Navbar from './components/navbar';
 import Home from './pages/home';
+import About from './pages/about';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <ThemeProvider theme={Theme}>
         <Navbar />
         <Home />
+        <About />
       </ThemeProvider>
       <GlobalStyle />
     </>
