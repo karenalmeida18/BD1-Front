@@ -33,6 +33,7 @@ module.exports = {
       args: 'none',
     }],
     'one-var': 'off',
+    'import/prefer-default-export': 'off',
     'one-var-declaration-per-line': 'off',
     'react/button-has-type': 'off',
   },
