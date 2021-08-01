@@ -153,7 +153,7 @@ export const Gift = styled.div`
          width: 20px;
          background-color: #7A1D1E;
          margin: auto;
-         
+
       }
    }
 `;
