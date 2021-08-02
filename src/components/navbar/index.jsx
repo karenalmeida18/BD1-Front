@@ -30,7 +30,7 @@ const Navbar = () => {
       <S.List>
         {
           listItens.map(({ name, href }) => (
-            <S.ListItem onClick={() => (setActive(name))}>
+            <S.ListItem onClick={() => (setActive(name))} key={href}>
               <S.RemoveLinkStyle href={href} active={name === active}>
                 {name}
               </S.RemoveLinkStyle>

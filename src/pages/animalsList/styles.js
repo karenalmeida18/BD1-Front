@@ -162,3 +162,38 @@ export const Gift = styled.div`
       }
    }
 `;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+
+  > div {
+     width: 100%;
+  }
+
+  button {
+     width: 100%;
+  }
+
+  input {
+    width: 100%;
+    display: block;
+    margin: 4px 0 18px 0;
+    padding: 14px 16px;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid ${(props) => props.theme.lightgray};
+    outline-color: ${(props) => props.theme.pink};
+
+    &:focus, &:active {
+      border: 1px solid ${(props) => props.theme.pink};
+    }
+  }
+
+  label {
+    color: ${(props) => props.theme.pink};
+    font-weight: 700;
+  }
+`;

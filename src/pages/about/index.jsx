@@ -77,12 +77,10 @@ const AboutItems = [
 const About = () => (
   <S.Container id="about">
     <S.Header>
-      <S.Header>
-        Oi, Somos a
-        {' '}
-        <b>Helpet</b>
-        !
-      </S.Header>
+      Oi, Somos a
+      {' '}
+      <b>Helpet</b>
+      !
       <S.Subtitle> Ajudamos você com a divulgação do seu pet! </S.Subtitle>
     </S.Header>
 

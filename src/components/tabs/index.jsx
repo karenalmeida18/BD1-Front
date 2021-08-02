@@ -12,6 +12,7 @@ const Tabs = ({ items }) => {
         <S.List>
           {items.map(({ tabLabel, tabItem }) => (
             <S.ListItem
+              ket={tabLabel}
               onClick={() => setItemSelected(tabItem)}
               active={tabItem === itemSelected}
             >
@@ -29,10 +30,10 @@ const Tabs = ({ items }) => {
 };
 
 Tabs.propTypes = {
-  items: PropTypes.arrayOf({
+  items: PropTypes.arrayOf(PropTypes.objectOf({
     tabLabel: PropTypes.string,
     tabItem: PropTypes.elementType,
-  }).isRequired,
+  })).isRequired,
 };
 
 export default Tabs;
