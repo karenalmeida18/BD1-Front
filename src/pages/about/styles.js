@@ -40,13 +40,64 @@ export const Card = styled.div`
   text-align: left;
   animation: ${Fade} 1s;
 
+  > main{
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+
+    > div {
+      display: flex;
+      height: 22vh;
+      width: 22vw;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      transition: 1s;
+      background-color: ${(props) => props.theme.white};
+      border-color: ${(props) => props.theme.black};
+      border-style: solid;
+      border-width: 1px;
+
+      &:hover {
+      height: 23vh;
+      width: 23vw;
+      border-color: ${(props) => props.theme.pink};
+      border-width: 2px;
+      color: ${(props) => props.theme.pink};
+    }
+  }
+
   > h3 {
     max-width: 700px;
     margin-bottom: 24px;
-    color: ${(props) => props.theme.gray}
+    color: ${(props) => props.theme.gray};
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
   }
 
   > p {
     margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  }
+
+    
+`;
+
+export const Image = styled.img`
+  width: 100px;
+  height: 100px;
+  transition: 1s;
+
+  &:hover{
+    width: 110px;
+    height: 110px;
   }
 `;
