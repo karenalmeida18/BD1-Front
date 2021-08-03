@@ -6,6 +6,7 @@ import Gift from '../../static/images/gift.png';
 import Luna from '../../static/images/luna.jpeg';
 
 import ModalGift from './modalGift';
+import ModalLogin from './modalLogin';
 
 const animals = [
   {
@@ -47,22 +48,32 @@ const animals = [
 ];
 
 const AnimalsList = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModalLogin, setOpenModalLogin] = useState(false);
+  const [openModalGift, setOpenModalGift] = useState(false);
   const [recompenseState, setRecompenseState] = useState('');
 
   return (
     <S.Container id="lostanimals">
       <S.Header>Animais perdidos</S.Header>
 
-      {openModal && (
-        <ModalGift closeModal={() => setOpenModal(false)} recompense={recompenseState} />
+      {openModalGift && (
+        <ModalGift
+          closeModal={() => setOpenModalGift(false)}
+          recompense={recompenseState}
+        />
+      )}
+
+      {openModalLogin && (
+        <ModalLogin
+          closeModal={() => setOpenModalLogin(false)}
+        />
       )}
 
       <S.List>
         {animals.map(({
           image, name, recompense, species,
         }) => (
-          <S.Card>
+          <S.Card key={name}>
             <S.Image src={image} alt={`foto de um ${species}`} />
 
             <S.Subtitle>{name}</S.Subtitle>
@@ -76,9 +87,9 @@ const AnimalsList = () => {
                   src={Gift}
                   alt="mão segurando uma caixa de presente"
                   className="icon-gift"
-                  onKeyPress={() => setOpenModal(true)}
+                  onKeyPress={() => setOpenModalGift(true)}
                   onClick={() => {
-                    setOpenModal(true);
+                    setOpenModalGift(true);
                     setRecompenseState(recompense);
                   }}
                 />
@@ -86,7 +97,7 @@ const AnimalsList = () => {
             </>
             )}
 
-            <S.Button> Encontrei </S.Button>
+            <S.Button onClick={() => setOpenModalLogin(true)}> Encontrei </S.Button>
           </S.Card>
         ))}
       </S.List>

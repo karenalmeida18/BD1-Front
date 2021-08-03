@@ -8,6 +8,10 @@ export const Container = styled.div`
    padding: 40px 20px;
    text-align: center;
    background: ${(props) => props.theme.bg};
+
+  @media (max-width: 800px) {
+    padding: 0px;
+  }
 `;
 
 export const Header = styled.h1`
@@ -19,12 +23,22 @@ export const Header = styled.h1`
     color: ${(props) => props.theme.pink};
     font-weight: 700;
   }
+
+
+  @media (max-width: 800px) {
+    font-size: 20px;
+  }
 `;
 
 export const Subtitle = styled.h2`
   color: ${(props) => props.theme.gray};
   font-size: 18px;
   margin-bottom: 20px;
+
+  
+  @media (max-width: 800px) {
+    font-size: 16px;
+  }
 `;
 
 export const Text = styled.p`

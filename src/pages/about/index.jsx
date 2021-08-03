@@ -8,7 +8,7 @@ import Arrow from '../../static/images/down-filled-triangular-arrow.png';
 
 const AboutItems = [
   {
-    tabLabel: 'Cadastrar animal perdido',
+    tabLabel: 'Cadastrar animal',
     tabItem: (
       <S.Card>
         <main>
@@ -33,7 +33,7 @@ const AboutItems = [
     ),
   },
   {
-    tabLabel: 'Anunciar animal perdido',
+    tabLabel: 'Anunciar animal',
     tabItem: (
       <S.Card>
         <main>
@@ -103,12 +103,10 @@ const AboutItems = [
 const About = () => (
   <S.Container id="about">
     <S.Header>
-      <S.Header>
-        Oi, Somos a
-        {' '}
-        <b>Helpet</b>
-        !
-      </S.Header>
+      Oi, Somos a
+      {' '}
+      <b>Helpet</b>
+      !
       <S.Subtitle> Ajudamos você com a divulgação do seu pet! </S.Subtitle>
     </S.Header>
 

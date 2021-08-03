@@ -22,6 +22,10 @@ export const List = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Card = styled.div`
@@ -154,7 +158,42 @@ export const Gift = styled.div`
          width: 20px;
          background-color: #7A1D1E;
          margin: auto;
-         
+
       }
    }
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+
+  > div {
+     width: 100%;
+  }
+
+  button {
+     width: 100%;
+  }
+
+  input {
+    width: 100%;
+    display: block;
+    margin: 4px 0 18px 0;
+    padding: 14px 16px;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid ${(props) => props.theme.lightgray};
+    outline-color: ${(props) => props.theme.pink};
+
+    &:focus, &:active {
+      border: 1px solid ${(props) => props.theme.pink};
+    }
+  }
+
+  label {
+    color: ${(props) => props.theme.pink};
+    font-weight: 700;
+  }
 `;
