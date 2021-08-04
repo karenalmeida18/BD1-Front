@@ -78,7 +78,7 @@ export const Button = styled.button`
   font-weight: 700;
   color: ${(props) => props.theme.pink};
   border: 2px solid ${(props) => props.theme.pink}; 
-  border-radius: 4px;
+  border-radius: 30px;
   padding: 8px 16px;
   text-transform: uppercase;
 

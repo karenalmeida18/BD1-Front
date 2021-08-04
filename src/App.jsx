@@ -8,16 +8,23 @@ import Home from './pages/home';
 import About from './pages/about';
 import AnimalsList from './pages/animalsList';
 import Register from './pages/register';
+import Login from './pages/login';
 
 function App() {
   return (
     <>
       <ThemeProvider theme={Theme}>
         <Navbar />
-        <Home />
-        <About />
-        <AnimalsList />
-        <Register />
+        {window && window.location.pathname === '/login' ? (
+          <Login />
+        ) : (
+          <>
+            <Home />
+            <About />
+            <AnimalsList />
+            <Register />
+          </>
+        )}
       </ThemeProvider>
       <GlobalStyle />
     </>

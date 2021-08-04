@@ -54,7 +54,7 @@ export const Card = styled.div`
   text-align: left;
   animation: ${Fade} 1s;
 
-  > main{
+  > main {
     display: flex;
 
     flex-direction: column;
@@ -90,7 +90,7 @@ export const Card = styled.div`
     max-width: 700px;
     margin-bottom: 24px;
     color: ${(props) => props.theme.gray};
-    font-size: 17px;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
   }

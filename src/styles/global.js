@@ -13,5 +13,6 @@ export default createGlobalStyle`
   }
   button {
     cursor : pointer;
+    border-radius: 30px;
   }
 `;

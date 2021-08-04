@@ -7,7 +7,7 @@ import Laco from '../../static/images/laco.png';
 import Close from '../../static/images/close.png';
 
 const ModalGift = ({ closeModal, recompense }) => (
-  <S.ModalContainer>
+  <S.ModalContainer onClick={() => closeModal()}>
     <S.ModalContent>
       <img src={Close} role="presentation" alt="botão para fechar modal" className="modal-close" onClick={() => closeModal()} />
       <S.Gift>

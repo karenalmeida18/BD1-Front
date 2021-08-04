@@ -8,7 +8,7 @@ export const Container = styled.div`
 
 export const Nav = styled.nav`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   background-color: ${(props) => props.theme.bg};

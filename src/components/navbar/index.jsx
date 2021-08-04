@@ -5,19 +5,19 @@ import * as S from './styles';
 
 const listItens = [
   {
-    href: '#home',
+    href: '/#home',
     name: 'Home',
   },
   {
-    href: '#about',
+    href: '/#about',
     name: 'Sobre',
   },
   {
-    href: '#lostanimals',
+    href: '/#lostanimals',
     name: 'Animais Perdidos',
   },
   {
-    href: '#reganimal',
+    href: '/#reganimal',
     name: 'Cadastrar Animal',
   },
 ];
@@ -37,6 +37,10 @@ const Navbar = () => {
             </S.ListItem>
           ))
         }
+        <S.Button>
+          {' '}
+          <S.RemoveLinkStyle href="/login"> Login </S.RemoveLinkStyle>
+        </S.Button>
       </S.List>
     </S.Nav>
   );
