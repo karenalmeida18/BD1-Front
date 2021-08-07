@@ -195,5 +195,6 @@ export const Form = styled.form`
   label {
     color: ${(props) => props.theme.pink};
     font-weight: 700;
+    width: 100%;
   }
 `;

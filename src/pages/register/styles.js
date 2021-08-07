@@ -27,6 +27,11 @@ export const Form = styled.form`
     flex-direction: column;
   }
 
+  > div {
+    display: flex;
+    flex-direction: column;
+  }
+
   .input-file {
     border: 1px dashed;
     padding: 10px 16px;
@@ -93,7 +98,7 @@ export const Button = styled.button`
   padding: 12px 16px;
 
   &:hover {
-    background-color: #9b538c;
+    background-color: #aa3192;
   }
 
   @media (max-width: 800px) {

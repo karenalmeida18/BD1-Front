@@ -10,9 +10,20 @@ export default createGlobalStyle`
      -webkit-font-smoothing: antialiased !important;
      font-family: 'Montserrat', sans-serif;
      scroll-behavior: smooth;
+     font-size: initial;
+     font-weight: initial;
   }
   button {
     cursor : pointer;
-    border-radius: 30px;
+  }
+  /* reset bootstrap css */
+  p {
+    margin: 0;
+  }
+  dl, ol, ul {
+    margin: 0;
+  }
+  h1, h2 {
+    font-weight: initial;
   }
 `;
