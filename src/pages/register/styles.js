@@ -61,6 +61,8 @@ export const Form = styled.form`
     padding: 14px 16px;
     border-radius: 4px;
     background: transparent;
+    font-size: initial;
+    line-height: initial;
     border: 1px solid ${(props) => props.theme.lightgray};
     outline-color: ${(props) => props.theme.pink};
     box-shadow: ${(props) => props.theme.shadow2};

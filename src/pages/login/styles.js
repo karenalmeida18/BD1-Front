@@ -41,9 +41,11 @@ export const Form = styled.form`
   input {
     width: 100%;
     display: block;
-    margin: 4px 0 24px 0;
+    margin: 4px 0 14px 0;
     padding: 14px 16px;
     border-radius: 4px;
+    font-size: initial;
+    line-height: initial;
     background: transparent;
     border: 1px solid ${(props) => props.theme.lightgray};
     outline-color: ${(props) => props.theme.pink};
