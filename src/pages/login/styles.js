@@ -60,6 +60,12 @@ export const Form = styled.form`
     color: ${(props) => props.theme.pink};
     font-weight: 700;
   }
+
+  .success {
+    text-align: center;
+    color: #7171da;
+    font-weight: 600;
+  }
 `;
 
 export const Header = styled.h2`
