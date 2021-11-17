@@ -26,7 +26,7 @@ const Login = () => {
       setSuccess('Usuário logado com sucesso');
       login();
     } catch (err) {
-      console.log({ err });
+      setSuccess('Erro ao logar');
     }
   };
 
@@ -61,7 +61,10 @@ const Login = () => {
             <button
               type="button"
               className="button-cta"
-              onClick={() => setRegisterForm(true)}
+              onClick={() => {
+                setSuccess('');
+                setRegisterForm(true);
+              }}
             >
               {' '}
               Criar conta

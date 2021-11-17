@@ -28,7 +28,7 @@ const FormRegister = ({ setRegisterForm }) => {
       login();
       setRegisterForm();
     } catch (err) {
-      console.log({ err });
+      setSuccess('Erro ao cadastrar');
     }
   };
 
@@ -81,7 +81,10 @@ const FormRegister = ({ setRegisterForm }) => {
         <button
           type="button"
           className="button-cta"
-          onClick={() => setRegisterForm()}
+          onClick={() => {
+            setSuccess('');
+            setRegisterForm();
+          }}
         >
           {' '}
           Voltar pro login
