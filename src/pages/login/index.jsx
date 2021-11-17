@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 
-// import api from '../../services/axios';
+import api from '../../services/axios';
 import * as S from './styles';
+import { login } from '../../services/auth';
 
 import FormRegister from './formRegister';
 
 const Login = () => {
   const [registerForm, setRegisterForm] = useState(false);
-  /* const [values, setValues] = useState({
+  const [values, setValues] = useState({
     name: '',
     password: '',
   });
+  const [success, setSuccess] = useState('');
 
-    const handleChange = (prop) => (event) => {
+  const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
@@ -26,18 +28,18 @@ const Login = () => {
     } catch (err) {
       console.log({ err });
     }
-  }; */
+  };
 
   return (
     <S.Container id="login">
       {!registerForm ? (
         <>
           <S.Header>Login</S.Header>
-          <S.Form>
+          <S.Form onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="name">
               Nome
               <input
-                // onChange={handleChange('name')}
+                onChange={handleChange('name')}
                 required
                 type="text"
                 id="name"
@@ -49,7 +51,7 @@ const Login = () => {
               Senha
               <input
                 required
-                // onChange={handleChange('password')}
+                onChange={handleChange('password')}
                 type="password"
                 id="password"
                 placeholder="Insira sua senha"
@@ -66,7 +68,7 @@ const Login = () => {
               {' '}
             </button>
             <S.Button> Entrar </S.Button>
-            {/* <span className="success">{success}</span> */}
+            <span className="success">{success}</span>
           </S.Form>
         </>
       ) : (
