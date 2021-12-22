@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import api from '../../services/axios';
 import * as S from './styles';
@@ -7,12 +8,14 @@ import { login } from '../../services/auth';
 import FormRegister from './formRegister';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [registerForm, setRegisterForm] = useState(false);
   const [values, setValues] = useState({
     name: '',
     password: '',
   });
   const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -21,11 +24,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     setSuccess('');
     e.preventDefault();
+    setLoading(true);
     try {
-      await api.post('/user/login', values);
+      const { data: { token } } = await api.post('/user/login', values);
       setSuccess('Usuário logado com sucesso');
-      login();
+      setLoading(false);
+      login({ token, user: values.name });
+      navigate('/');
     } catch (err) {
+      setLoading(false);
       setSuccess('Erro ao logar');
     }
   };
@@ -70,7 +77,7 @@ const Login = () => {
               Criar conta
               {' '}
             </button>
-            <S.Button> Entrar </S.Button>
+            <S.Button type="submit" disabled={loading}> Entrar </S.Button>
             <span className="success">{success}</span>
           </S.Form>
         </>

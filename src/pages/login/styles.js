@@ -75,7 +75,10 @@ export const Header = styled.h2`
     color: ${(props) => props.theme.pink};
 `;
 
-export const Button = styled.button`
+export const Button = styled.button.attrs((props) => ({
+  type: 'submit',
+  disabled: props.disabled,
+}))`
   border: none;
   margin: 8px auto;
   width: 100%;
@@ -85,6 +88,11 @@ export const Button = styled.button`
   font-size: 16px;
   background: ${(props) => props.theme.pink};
   padding: 12px 16px;
+
+  &[disabled]{
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
 
   &:hover {
     background-color: #9b538c;
