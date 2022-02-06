@@ -7,6 +7,7 @@ import About from './pages/about';
 import AnimalsList from './pages/animalsList';
 import Register from './pages/register';
 import Login from './pages/login';
+import Profile from './pages/profile';
 
 const Landing = () => (
   <>
@@ -25,12 +26,20 @@ const LoginPage = () => (
   </>
 );
 
+const ProfilePage = () => (
+  <>
+    <Navbar />
+    <Profile />
+  </>
+);
+
 export default function RoutesWrapper() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" exact element={<Landing />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );

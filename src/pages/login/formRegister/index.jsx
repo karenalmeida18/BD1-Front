@@ -13,22 +13,22 @@ const FormRegister = ({ setRegisterForm }) => {
     telephone: '',
   });
 
-  const [success, setSuccess] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
   const handleSubmit = async (e) => {
-    setSuccess('');
+    setMessage('');
     e.preventDefault();
     try {
       await api.post('/user/register', values);
-      setSuccess('Usuário registrado com sucesso');
+      setMessage('Usuário registrado com sucesso');
       login();
       setRegisterForm();
     } catch (err) {
-      setSuccess('Erro ao cadastrar');
+      setMessage('Erro ao cadastrar');
     }
   };
 
@@ -82,7 +82,7 @@ const FormRegister = ({ setRegisterForm }) => {
           type="button"
           className="button-cta"
           onClick={() => {
-            setSuccess('');
+            setMessage('');
             setRegisterForm();
           }}
         >
@@ -91,7 +91,7 @@ const FormRegister = ({ setRegisterForm }) => {
           {' '}
         </button>
         <S.Button> Cadastrar </S.Button>
-        <span className="success">{success}</span>
+        <span className="success">{message}</span>
       </S.Form>
     </>
   );

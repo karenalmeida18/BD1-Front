@@ -14,6 +14,27 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
   }
+
+  .button-cta {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    margin-top: 10px;
+    font-size: 14px;
+    grid-column: 1/4;
+    font-weight: 600;
+    color: ${(props) => props.theme.black};
+
+    &:hover {
+      color: ${(props) => props.theme.pink};
+    }
+ 
+  .success {
+    text-align: center;
+    color: #7171da;
+    font-weight: 600;
+    grid-column: 1/4;
+  }
 `;
 
 export const Form = styled.form`
@@ -96,11 +117,11 @@ export const Button = styled.button`
   color: ${(props) => props.theme.white};
   font-weight: bold;
   font-size: 16px;
-  background: ${(props) => props.theme.pink};
+  background: ${(props) => (props.disabled ? 'lightgray' : props.theme.pink)};
   padding: 12px 16px;
 
-  &:hover {
-    background-color: #aa3192;
+  &:hover 
+    background: ${(props) => (props.disabled ? props.theme.gray : '#aa3192')};
   }
 
   @media (max-width: 800px) {

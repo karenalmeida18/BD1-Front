@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../static/images/logo.png';
 
-import { isAuthenticated, logout } from '../../services/auth';
+import { isAuthenticated } from '../../services/auth';
 
 import * as S from './styles';
 
@@ -48,9 +48,9 @@ const Navbar = () => {
           </S.ListItem>
         ))}
         {isAuthenticated() ? (
-          <S.Button onClick={() => { logout(); window.location.reload(); }}>
+          <S.Button onClick={() => navigate('/profile')}>
             {' '}
-            <S.RemoveLinkStyle> Sair </S.RemoveLinkStyle>
+            <S.RemoveLinkStyle> Ver perfil </S.RemoveLinkStyle>
           </S.Button>
         ) : (
           <S.Button onClick={() => navigate('/login')}>
