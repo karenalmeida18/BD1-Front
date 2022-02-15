@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import * as S from '../styles';
 import api from '../../../services/axios';
-import { login } from '../../../services/auth';
 
 const FormRegister = ({ setRegisterForm }) => {
   const [values, setValues] = useState({
@@ -25,7 +24,6 @@ const FormRegister = ({ setRegisterForm }) => {
     try {
       await api.post('/user/register', values);
       setMessage('Usuário registrado com sucesso');
-      login();
       setRegisterForm();
     } catch (err) {
       setMessage('Erro ao cadastrar');

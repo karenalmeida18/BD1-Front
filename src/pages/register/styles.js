@@ -28,12 +28,6 @@ export const Container = styled.div`
     &:hover {
       color: ${(props) => props.theme.pink};
     }
- 
-  .success {
-    text-align: center;
-    color: #7171da;
-    font-weight: 600;
-    grid-column: 1/4;
   }
 `;
 
@@ -97,6 +91,13 @@ export const Form = styled.form`
     color: ${(props) => props.theme.pink};
     font-weight: 700;
   }
+
+  .success {
+    text-align: center;
+    color: #7171da;
+    font-weight: 600;
+    grid-column: 1/4;
+  }
 `;
 
 export const Header = styled.h2`
@@ -120,7 +121,7 @@ export const Button = styled.button`
   background: ${(props) => (props.disabled ? 'lightgray' : props.theme.pink)};
   padding: 12px 16px;
 
-  &:hover 
+  &:hover {
     background: ${(props) => (props.disabled ? props.theme.gray : '#aa3192')};
   }
 

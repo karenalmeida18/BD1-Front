@@ -26,10 +26,10 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data: { token } } = await api.post('/user/login', values);
+      const { data: { token, user } } = await api.post('/user/login', values);
       setSuccess('Usuário logado com sucesso');
       setLoading(false);
-      login({ token, user: values.name });
+      login({ token, user });
       navigate('/');
     } catch (err) {
       setLoading(false);

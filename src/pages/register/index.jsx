@@ -26,6 +26,7 @@ const Register = () => {
       setSuccess('Animal cadastrado com sucesso');
       setLoading(false);
       navigate('/');
+      window.location.reload();
     } catch (err) {
       setLoading(false);
       setSuccess('Erro ao cadastrar. tente novamente');

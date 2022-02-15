@@ -72,12 +72,12 @@ export const Recompense = styled.div`
 `;
 
 export const Button = styled.button`
-  background-color: transparent;
+  background-color: ${(props) => (props.isCurrentUser ? 'darkred' : 'transparent')};
   margin-top: 16px;
   width: 80%;
   font-weight: 700;
-  color: ${(props) => props.theme.pink};
-  border: 2px solid ${(props) => props.theme.pink}; 
+  color: ${(props) => (props.isCurrentUser ? props.theme.white : props.theme.pink)};
+  border: 2px solid ${(props) => (props.isCurrentUser ? 'darkred' : props.theme.pink)};
   border-radius: 30px;
   padding: 8px 16px;
   text-transform: uppercase;
@@ -86,6 +86,12 @@ export const Button = styled.button`
      background-color: ${(props) => props.theme.pink};
      color: ${(props) => props.theme.white};
      transition: all .2s;
+  }
+
+  :disabled {
+    background-color: ${(props) => props.theme.lightgray};
+    color: ${(props) => props.theme.gray};
+    border: 2px solid ${(props) => props.theme.white}; 
   }
 `;
 

@@ -8,12 +8,15 @@ import ModalGift from './modalGift';
 import ModalLogin from './modalLogin';
 
 import api from '../../services/axios';
+import { getCurrentUser, isAuthenticated } from '../../services/auth';
 
 const AnimalsList = () => {
   const [openModalLogin, setOpenModalLogin] = useState(false);
   const [openModalGift, setOpenModalGift] = useState(false);
   const [recompenseState, setRecompenseState] = useState('');
   const [animals, setAnimals] = useState([]);
+  const { id: currentUserId } = getCurrentUser();
+  const [animalId, setAnimalId] = useState('');
 
   useEffect(() => {
     const getAnimals = async () => {
@@ -28,6 +31,24 @@ const AnimalsList = () => {
     getAnimals();
   }, []);
 
+  const handleDeleteAnimal = async (animalIdActive) => {
+    try {
+      await api.delete(`animals/delete/${animalIdActive}`);
+      setAnimals(animals.filter(({ id }) => (id !== animalIdActive)));
+    } catch (err) {
+      console.log({ err });
+    }
+  };
+
+  const handleOpenModalLogin = ({ animalId: animalIdActive, userId }) => {
+    if (currentUserId === userId) {
+      handleDeleteAnimal(animalIdActive);
+    } else {
+      setOpenModalLogin(true);
+      setAnimalId(animalIdActive);
+    }
+  };
+
   return (
     <S.Container id="lostanimals">
       <S.Header>Animais perdidos</S.Header>
@@ -40,12 +61,12 @@ const AnimalsList = () => {
       )}
 
       {openModalLogin && (
-        <ModalLogin closeModal={() => setOpenModalLogin(false)} />
+        <ModalLogin closeModal={() => setOpenModalLogin(false)} isLogged={isAuthenticated()} animal_id={animalId} />
       )}
 
       <S.List>
         {animals.map(({
-          image, name, reward, species,
+          image, id, name, reward, species, user_id: userId,
         }) => (
           <S.Card key={name}>
             {image && (<S.Image src={image} alt={`foto de um ${species}`} />)}
@@ -71,9 +92,9 @@ const AnimalsList = () => {
             </>
             )}
 
-            <S.Button onClick={() => setOpenModalLogin(true)}>
+            <S.Button onClick={() => handleOpenModalLogin({ animalId: id, userId })} isCurrentUser={currentUserId === userId}>
               {' '}
-              Encontrei
+              {currentUserId === userId ? 'Remover' : 'Encontrei'}
               {' '}
             </S.Button>
           </S.Card>

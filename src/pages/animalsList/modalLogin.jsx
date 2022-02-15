@@ -1,46 +1,80 @@
-import React from 'react';
+/* eslint-disable camelcase */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 import * as S from './styles';
+import api from '../../services/axios';
 
 import Close from '../../static/images/close.png';
 
-const ModalLogin = ({ closeModal }) => (
-  <S.ModalContainer>
-    <S.ModalContent>
-      <img src={Close} role="presentation" alt="botão para fechar modal" className="modal-close" onClick={() => closeModal()} />
+const ModalLogin = ({ closeModal, isLogged, animal_id }) => {
+  const [message, setMessage] = useState();
+  const navigate = useNavigate();
 
-      <S.Form>
-        <div>
-          <label htmlFor="name">
-            Nome
-            <input
-              type="text"
-              id="name"
-              placeholder="Insira seu nome para contato"
-            />
-          </label>
+  const handleSubmit = async (e) => {
+    setMessage('');
+    e.preventDefault();
+    try {
+      await api.post(`/messages/register/${animal_id}`, { message });
+      setMessage('Mensagem enviada com sucesso');
+      navigate('/profile');
+    } catch (err) {
+      setMessage('Erro ao enviar mensagem');
+    }
+  };
 
-          <label htmlFor="tel">
-            Telefone
-            <input
-              type="text"
-              id="tel"
-              placeholder="Insira seu telefone para contato"
-            />
-          </label>
+  return (
+    <S.ModalContainer>
+      <S.ModalContent>
+        <img
+          src={Close}
+          role="presentation"
+          alt="botão para fechar modal"
+          className="modal-close"
+          onClick={() => closeModal()}
+        />
 
-        </div>
-        <S.Button> Enviar </S.Button>
-        <p style={{ marginTop: '15px' }}> ou </p>
-        <S.Button> Faça login </S.Button>
-      </S.Form>
-    </S.ModalContent>
-  </S.ModalContainer>
-);
+        <S.Form onSubmit={(e) => handleSubmit(e)}>
+          {isLogged ? (
+            <>
+              <div>
+                <label htmlFor="message">
+                  Mensagem
+                  <input
+                    onChange={(e) => setMessage(e.target.value)}
+                    type="textarea"
+                    id="message"
+                    placeholder="Insira sua mensagem para o dono do pet."
+                  />
+                </label>
+              </div>
+              <S.Button type="submit"> Enviar </S.Button>
+            </>
+          ) : (
+            <>
+              <p> Faça login para entrar em contato </p>
+              <S.Button type="button" onClick={() => navigate('/login')}>
+                {' '}
+                Login
+                {' '}
+              </S.Button>
+            </>
+          )}
+        </S.Form>
+      </S.ModalContent>
+    </S.ModalContainer>
+  );
+};
 
 ModalLogin.propTypes = {
   closeModal: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool,
+  animal_id: PropTypes.number.isRequired,
+};
+
+ModalLogin.defaultProps = {
+  isLogged: false,
 };
 
 export default ModalLogin;
