@@ -11,12 +11,22 @@ const Profile = () => {
   const [messages, setMessages] = useState([]);
   const [messageId, setMessageId] = useState('');
   const [answer, setAnswer] = useState();
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const getMessages = async () => {
       try {
         const { data } = await api.get('/messages/list');
         setMessages(data);
+      } catch (e) {
+        // console.log({ e });
+      }
+    };
+
+    const getUsers = async () => {
+      try {
+        const { data } = await api.get('/users/list');
+        setUsers(data);
         ReactTooltip.rebuild();
       } catch (e) {
         // console.log({ e });
@@ -24,6 +34,7 @@ const Profile = () => {
     };
 
     getMessages();
+    getUsers();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -50,40 +61,44 @@ const Profile = () => {
         <h3> Suas mensagens</h3>
         {messages.length > 0
           && messages.map(({
-            id, message, date, users, answers,
-          }) => (
-            <S.MessageContainer>
-              <S.MessageBox>
-                <p className="message-header">
-                  <h4 data-tip={`Telefone: ${users.telephone}` || 'Sem telefone'}>{users.name}</h4>
-                  {' '}
-                  diz:
-                  {' '}
-                </p>
-                <p>{message}</p>
-                <span>{date}</span>
+            // eslint-disable-next-line camelcase
+            id, message, date, user_id, answers,
+          }) => {
+            // eslint-disable-next-line camelcase
+            const user = users.find(({ id: userListId }) => user_id === userListId);
+            return (
+              <S.MessageContainer>
+                <S.MessageBox>
+                  <p className="message-header">
+                    <h4 data-tip={`Telefone: ${user.telephone}` || 'Sem telefone'}>{user.name}</h4>
+                    {' '}
+                    diz:
+                    {' '}
+                  </p>
+                  <p>{message}</p>
+                  <span>{date}</span>
 
-                <div className="message-footer">
-                  <button onClick={() => setButtonFunction(id)}>
-                    {!messageId ? 'Responder' : 'Cancelar'}
-                  </button>
-                </div>
-              </S.MessageBox>
-              {messageId === id && (
-              <S.MessageAnswer>
-                <label htmlFor="answer">
-                  {'Sua resposta: '}
-                  <input
-                    onChange={(e) => setAnswer(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSubmit(e)}
-                    type="text"
-                    id="answer"
-                    placeholder="Insira sua resposta ou entre em contato"
-                  />
-                </label>
-              </S.MessageAnswer>
-              )}
-              {answers?.length > 0
+                  <div className="message-footer">
+                    <button onClick={() => setButtonFunction(id)}>
+                      {!messageId ? 'Responder' : 'Cancelar'}
+                    </button>
+                  </div>
+                </S.MessageBox>
+                {messageId === id && (
+                <S.MessageAnswer>
+                  <label htmlFor="answer">
+                    {'Sua resposta: '}
+                    <input
+                      onChange={(e) => setAnswer(e.target.value)}
+                      onKeyPress={(e) => e.key === 'Enter' && handleSubmit(e)}
+                      type="text"
+                      id="answer"
+                      placeholder="Insira sua resposta ou entre em contato"
+                    />
+                  </label>
+                </S.MessageAnswer>
+                )}
+                {answers?.length > 0
                 && answers.map(({ answer: answerMessage }) => (
                   <S.MessageBox isAnswer>
                     <p className="message-header">
@@ -95,8 +110,9 @@ const Profile = () => {
                     <p>{answerMessage}</p>
                   </S.MessageBox>
                 ))}
-            </S.MessageContainer>
-          ))}
+              </S.MessageContainer>
+            );
+          })}
         {messages.length === 0 && (
           <span> Você não recebeu nenhuma mensagem ainda. </span>
         )}
