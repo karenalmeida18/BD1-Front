@@ -24,7 +24,7 @@ const AnimalsList = () => {
         const { data } = await api.get('/animals/list');
         setAnimals(data);
       } catch (e) {
-        console.log({ e });
+        // console.log({ e });
       }
     };
 
@@ -36,7 +36,7 @@ const AnimalsList = () => {
       await api.delete(`animals/delete/${animalIdActive}`);
       setAnimals(animals.filter(({ id }) => (id !== animalIdActive)));
     } catch (err) {
-      console.log({ err });
+      // console.log({ err });
     }
   };
 

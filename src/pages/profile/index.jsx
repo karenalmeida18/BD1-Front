@@ -19,7 +19,7 @@ const Profile = () => {
         setMessages(data);
         ReactTooltip.rebuild();
       } catch (e) {
-        console.log({ e });
+        // console.log({ e });
       }
     };
 
@@ -32,7 +32,7 @@ const Profile = () => {
       await api.post(`answers/register/${messageId}`, { answer });
       window.location.reload();
     } catch (err) {
-      console.log({ err });
+      // console.log({ err });
     }
   };
 
