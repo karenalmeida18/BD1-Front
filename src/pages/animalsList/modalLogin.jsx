@@ -9,7 +9,7 @@ import api from '../../services/axios';
 import Close from '../../static/images/close.png';
 
 const ModalLogin = ({
-  closeModal, isLogged, animal_id, user_id,
+  closeModal, isLogged, animal_id, user_id, send_by_user_id,
 }) => {
   const [message, setMessage] = useState();
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const ModalLogin = ({
     setMessage('');
     e.preventDefault();
     try {
-      await api.post(`/messages/register/${animal_id}`, { message, user_id });
+      await api.post(`/messages/register/${animal_id}`, { message, user_id, send_by_user_id });
       setMessage('Mensagem enviada com sucesso');
       navigate('/profile');
     } catch (err) {
@@ -74,6 +74,7 @@ ModalLogin.propTypes = {
   isLogged: PropTypes.bool,
   animal_id: PropTypes.number.isRequired,
   user_id: PropTypes.number.isRequired,
+  send_by_user_id: PropTypes.number.isRequired,
 };
 
 ModalLogin.defaultProps = {

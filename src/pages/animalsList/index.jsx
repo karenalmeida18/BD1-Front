@@ -63,7 +63,7 @@ const AnimalsList = () => {
       )}
 
       {openModalLogin && (
-        <ModalLogin closeModal={() => setOpenModalLogin(false)} isLogged={isAuthenticated()} animal_id={animalId} user_id={userIdActive} />
+        <ModalLogin closeModal={() => setOpenModalLogin(false)} isLogged={isAuthenticated()} animal_id={animalId} user_id={userIdActive} send_by_user_id={currentUserId} />
       )}
 
       <S.List>

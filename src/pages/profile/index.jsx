@@ -18,6 +18,7 @@ const Profile = () => {
       try {
         const { data } = await api.get('/messages/list');
         setMessages(data);
+        ReactTooltip.rebuild();
       } catch (e) {
         // console.log({ e });
       }
@@ -25,7 +26,7 @@ const Profile = () => {
 
     const getUsers = async () => {
       try {
-        const { data } = await api.get('/users/list');
+        const { data } = await api.get('/user/list');
         setUsers(data);
         ReactTooltip.rebuild();
       } catch (e) {
@@ -62,15 +63,15 @@ const Profile = () => {
         {messages.length > 0
           && messages.map(({
             // eslint-disable-next-line camelcase
-            id, message, date, user_id, answers,
+            id, message, date, send_by_user_id, answers,
           }) => {
             // eslint-disable-next-line camelcase
-            const user = users.find(({ id: userListId }) => user_id === userListId);
+            const user = users.find(({ id: userListId }) => send_by_user_id === userListId);
             return (
               <S.MessageContainer>
                 <S.MessageBox>
                   <p className="message-header">
-                    <h4 data-tip={`Telefone: ${user.telephone}` || 'Sem telefone'}>{user.name}</h4>
+                    <h4 data-tip={`Telefone: ${user?.telephone}` || 'Sem telefone'}>{user?.name}</h4>
                     {' '}
                     diz:
                     {' '}
