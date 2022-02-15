@@ -17,6 +17,7 @@ const AnimalsList = () => {
   const [animals, setAnimals] = useState([]);
   const { id: currentUserId } = getCurrentUser();
   const [animalId, setAnimalId] = useState('');
+  const [userIdActive, setUserIdActive] = useState('');
 
   useEffect(() => {
     const getAnimals = async () => {
@@ -46,6 +47,7 @@ const AnimalsList = () => {
     } else {
       setOpenModalLogin(true);
       setAnimalId(animalIdActive);
+      setUserIdActive(userId);
     }
   };
 
@@ -61,7 +63,7 @@ const AnimalsList = () => {
       )}
 
       {openModalLogin && (
-        <ModalLogin closeModal={() => setOpenModalLogin(false)} isLogged={isAuthenticated()} animal_id={animalId} />
+        <ModalLogin closeModal={() => setOpenModalLogin(false)} isLogged={isAuthenticated()} animal_id={animalId} user_id={userIdActive} />
       )}
 
       <S.List>
